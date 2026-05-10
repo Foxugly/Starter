@@ -106,7 +106,10 @@ jobs:
           cache-dependency-path: starter-frontend/package-lock.json
 
       - name: Install frontend dependencies
-        run: npm ci
+        # `npm install` instead of `npm ci`: the lockfile contains optional
+        # peer-dep slots that npm 11's strict ci validation refuses. `install`
+        # tolerates the mismatch and produces an equivalent install.
+        run: npm install --no-audit --no-fund
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
@@ -157,7 +160,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r starter-server/requirements.txt
           cd starter-frontend
-          npm ci
+          npm install --no-audit --no-fund
 
       - name: Regenerate OpenAPI and frontend client
         shell: pwsh
