@@ -1,0 +1,110 @@
+<section class="about-page">
+  <p-tabs [(value)]="activeTab">
+    <p-tablist>
+      <p-tab value="company">
+        <span class="pi pi-building tab-icon"></span>
+        <span>{{ ui().tabs.company }}</span>
+      </p-tab>
+      <p-tab value="legal">
+        <span class="pi pi-shield tab-icon"></span>
+        <span>{{ ui().tabs.legal }}</span>
+      </p-tab>
+      <p-tab value="technical">
+        <span class="pi pi-code tab-icon"></span>
+        <span>{{ ui().tabs.technical }}</span>
+      </p-tab>
+    </p-tablist>
+
+    <p-tabpanels>
+      <!-- ── Société ── -->
+      <p-tabpanel value="company">
+        <article class="tab-content">
+          <h2>{{ ui().companyTitle }}</h2>
+          <p class="tab-intro">{{ ui().companyIntro }}</p>
+          <dl class="company-list">
+            <dt>{{ ui().company.companyLabel }}</dt>
+            <dd>{{ contact.company }}</dd>
+
+            <dt>{{ ui().company.vatLabel }}</dt>
+            <dd class="mono">{{ contact.vat }}</dd>
+
+            <dt>{{ ui().company.addressLabel }}</dt>
+            <dd>
+              @for (line of contact.addressLines; track line; let last = $last) {
+                <span>{{ line }}</span>@if (!last) {<br>}
+              }
+            </dd>
+
+            <dt>{{ ui().company.emailLabel }}</dt>
+            <dd class="contact-row">
+              <span class="mono">{{ emailDisplay }}</span>
+              <button (click)="emailClick()" class="contact-btn" type="button">
+                <i class="pi pi-envelope"></i>
+                <span>{{ ui().company.emailButton }}</span>
+              </button>
+            </dd>
+
+            <dt>{{ ui().company.phoneLabel }}</dt>
+            <dd class="mono">{{ phoneDisplay }}</dd>
+
+            <dt>{{ ui().company.websiteLabel }}</dt>
+            <dd>
+              <a [href]="contact.websiteUrl" class="mono mono-link" rel="noreferrer noopener" target="_blank">
+                {{ contact.websiteLabel }}
+              </a>
+            </dd>
+          </dl>
+        </article>
+      </p-tabpanel>
+
+      <!-- ── Legal ── -->
+      <p-tabpanel value="legal">
+        <article class="tab-content">
+          <h2>{{ ui().legalTitle }}</h2>
+          <p class="tab-intro">{{ ui().legalIntro }}</p>
+          <div class="legal-sections">
+            @for (section of ui().legalSections; track section.title) {
+              <div class="legal-block">
+                <h3>{{ section.title }}</h3>
+                <ul>
+                  @for (line of section.content; track line) {
+                    <li>{{ line }}</li>
+                  }
+                </ul>
+              </div>
+            }
+          </div>
+        </article>
+      </p-tabpanel>
+
+      <!-- ── Technical ── -->
+      <p-tabpanel value="technical">
+        <article class="tab-content">
+          <h2>{{ ui().technicalTitle }}</h2>
+          <p class="tab-intro">{{ ui().technicalIntro }}</p>
+          <div class="tech-grid">
+            @for (key of technicalCardKeys; track key) {
+              <div class="tech-card">
+                <h3>{{ ui().cards[key].title }}</h3>
+                <p>{{ ui().cards[key].description }}</p>
+                @if (key === 'repository') {
+                  <div class="meta-block">
+                    <span class="meta-label">{{ ui().repositoryUrlLabel }}</span>
+                    <a class="mono mono-link" [href]="repositoryUrl" rel="noreferrer" target="_blank">
+                      {{ repositoryUrl }}
+                    </a>
+                  </div>
+                }
+                <ul>
+                  @for (item of ui().cards[key].items; track item) {
+                    <li>{{ item }}</li>
+                  }
+                </ul>
+              </div>
+            }
+          </div>
+        </article>
+      </p-tabpanel>
+    </p-tabpanels>
+  </p-tabs>
+</section>

@@ -1,0 +1,43 @@
+<header class="topbar" #mobileMenuRoot>
+  <div class="topbar__inner" [class.topbar__inner--menu-open]="mobileMenuOpen()">
+    <button (click)="goHome()" class="brand" type="button">
+      <span class="brand__mark">
+        <img [alt]="app.name" [src]="app.logoSvg" class="brand__logo">
+      </span>
+      <span class="brand__text">
+        <span class="brand__name">{{ app.name }}</span>
+      </span>
+    </button>
+
+    <button
+      class="topbar__toggle"
+      type="button"
+      [attr.aria-expanded]="mobileMenuOpen()"
+      [attr.aria-label]="mobileMenuOpen() ? 'Close menu' : 'Open menu'"
+      (click)="toggleMobileMenu($event)"
+    >
+      <i class="pi" [class.pi-bars]="!mobileMenuOpen()" [class.pi-times]="mobileMenuOpen()"></i>
+    </button>
+
+    <nav class="nav" [attr.aria-label]="ui.topmenu.navAria">
+      @for (item of navItems; track item.label) {
+        <a
+          [routerLink]="item.link"
+          class="nav__link"
+          routerLinkActive="nav__link--active"
+          [class.nav__link--accent]="item.accent"
+        >
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+
+    <div class="topbar__actions">
+      <app-lang-select
+        (langChange)="onLangChange($event)"
+        [lang]="currentLang"
+      ></app-lang-select>
+      <app-user-menu></app-user-menu>
+    </div>
+  </div>
+</header>

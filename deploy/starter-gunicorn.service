@@ -1,0 +1,26 @@
+[Unit]
+Description=Starter Django (gunicorn)
+After=network.target
+
+[Service]
+Type=simple
+User=django
+Group=www-data
+WorkingDirectory=/var/www/django_websites/Starter/starter-server
+
+EnvironmentFile=/var/www/django_websites/Starter/starter-server/.env
+Environment="PYTHONUNBUFFERED=1"
+
+ExecStart=/var/www/django_websites/Starter/starter-server/.venv/bin/gunicorn \
+    --workers 2 \
+    --timeout 120 \
+    --bind 127.0.0.1:8000 \
+    --access-logfile /var/log/starter/gunicorn-access.log \
+    --error-logfile /var/log/starter/gunicorn-error.log \
+    config.wsgi:application
+
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

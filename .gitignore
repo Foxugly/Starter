@@ -1,0 +1,18 @@
+# --- Local environments / tooling ---
+.venv/
+venv/
+env/
+
+# --- IDE / editor ---
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- OS metadata ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Misc ---
+*.log

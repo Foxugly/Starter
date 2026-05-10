@@ -1,0 +1,256 @@
+.about-page {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1rem 0 2rem;
+}
+
+/* ── Hero ── */
+.hero {
+  padding: 2rem;
+  border: 1px solid #d7dfeb;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(229, 122, 43, 0.14), transparent 28%),
+    linear-gradient(135deg, #f5f8fc 0%, #ffffff 100%);
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a4b20;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 3.25rem);
+  line-height: 1;
+  color: #1e2c38;
+}
+
+.lead {
+  max-width: 60rem;
+  margin: 1rem 0 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #455564;
+}
+
+.repo-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.1rem;
+  border-radius: 999px;
+  background: #1e2c38;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ── Tabs ── */
+.tab-icon {
+  margin-right: 0.35rem;
+  font-size: 0.95rem;
+}
+
+/* ── Tab content (shared) ── */
+.tab-content {
+  padding: 1.5rem;
+  border: 1px solid #dde5ef;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(30, 44, 56, 0.05);
+}
+
+.tab-content h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.3rem;
+  color: #1e2c38;
+}
+
+.tab-content h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  color: #1e2c38;
+}
+
+.tab-intro {
+  margin: 0 0 1.25rem;
+  color: #4f6170;
+  line-height: 1.65;
+}
+
+/* ── Company tab ── */
+.company-list {
+  display: grid;
+  gap: 0.85rem 1.25rem;
+  grid-template-columns: minmax(8rem, max-content) 1fr;
+  margin: 0;
+}
+
+.company-list dt {
+  color: #4f6170;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0;
+  text-transform: uppercase;
+  align-self: start;
+  padding-top: 0.15rem;
+}
+
+.company-list dd {
+  color: #1e2c38;
+  margin: 0;
+  line-height: 1.55;
+}
+
+.contact-row {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.contact-btn {
+  align-items: center;
+  background: #1e2c38;
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  gap: 0.45rem;
+  padding: 0.5rem 0.9rem;
+  transition: background-color 160ms ease;
+}
+
+.contact-btn:hover {
+  background: #0f172a;
+}
+
+@media (max-width: 640px) {
+  .company-list {
+    grid-template-columns: 1fr;
+    gap: 0.4rem 0;
+  }
+
+  .company-list dd {
+    margin-bottom: 0.6rem;
+  }
+}
+
+/* ── Features tab ── */
+.feature-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: #334250;
+}
+
+.feature-list li + li {
+  margin-top: 0.65rem;
+}
+
+/* ── Legal tab ── */
+.legal-sections {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.legal-block {
+  padding: 1rem 1.25rem;
+  border: 1px solid #e8ecf1;
+  border-radius: 12px;
+  background: #fafbfc;
+}
+
+.legal-block h3 {
+  font-weight: 650;
+  color: #1e2c38;
+}
+
+.legal-block ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: #334250;
+}
+
+.legal-block li + li {
+  margin-top: 0.4rem;
+}
+
+/* ── Technical tab ── */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.tech-card {
+  padding: 1.25rem;
+  border: 1px solid #dde5ef;
+  border-radius: 14px;
+  background: #fafbfc;
+  display: grid;
+  gap: 0.6rem;
+  align-content: start;
+}
+
+.tech-card p {
+  margin: 0;
+  color: #4f6170;
+  line-height: 1.55;
+}
+
+.tech-card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: #334250;
+}
+
+.tech-card li + li {
+  margin-top: 0.35rem;
+}
+
+.meta-block {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.meta-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #8a4b20;
+}
+
+.mono {
+  font-family: "Consolas", "Courier New", monospace;
+  word-break: break-all;
+  color: #1e2c38;
+}
+
+.mono-link {
+  text-decoration: none;
+}
+
+.mono-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 1.5rem;
+  }
+}

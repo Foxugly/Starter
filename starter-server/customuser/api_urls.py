@@ -1,0 +1,22 @@
+from django.urls import path
+from rest_framework.routers import DefaultRouter
+
+from .views import (
+    CustomUserViewSet,
+    EmailConfirmView,
+    PasswordChangeView,
+    PasswordResetConfirmView,
+    PasswordResetRequestView,
+)
+
+app_name = "user-api"
+
+router = DefaultRouter()
+router.register("", CustomUserViewSet, basename="user")
+
+urlpatterns = router.urls + [
+    path("password/reset/", PasswordResetRequestView.as_view(), name="password-reset"),
+    path("password/reset/confirm/", PasswordResetConfirmView.as_view(), name="password-reset-confirm"),
+    path("email/confirm/", EmailConfirmView.as_view(), name="email-confirm"),
+    path("password/change/", PasswordChangeView.as_view(), name="password-change"),
+]

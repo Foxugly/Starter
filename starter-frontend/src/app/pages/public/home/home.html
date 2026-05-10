@@ -1,0 +1,20 @@
+<section class="home-page">
+  <header class="hero">
+    <div class="hero__content">
+      <p class="hero__eyebrow">{{ ui().home.eyebrow }}</p>
+      <h1>{{ app.name }}</h1>
+      <p class="hero__lead">{{ ui().home.lead }}</p>
+
+      <div class="hero__actions">
+        <p-button [routerLink]="primaryCta()" [label]="primaryCtaLabel()"></p-button>
+        @if (!isAuthenticated()) {
+          <p-button [routerLink]="secondaryCta()" [label]="secondaryCtaLabel()" variant="outlined"></p-button>
+        }
+        <button (click)="contactClick()" class="hero__contact" type="button">
+          <i class="pi pi-envelope"></i>
+          <span>{{ ui().home.contactCta }}</span>
+        </button>
+      </div>
+    </div>
+  </header>
+</section>

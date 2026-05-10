@@ -1,0 +1,28 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.0
+    hooks:
+      - id: ruff
+        args: [--fix]
+        files: ^starter-server/
+      - id: ruff-format
+        files: ^starter-server/
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+        args: [--maxkb=500]
+      - id: check-merge-conflict
+      - id: detect-private-key
+
+  - repo: local
+    hooks:
+      - id: starter-name-leaks
+        name: Block carryover business names
+        entry: bash -c 'grep -rnE "\b(quizonline|QuizOnline|Domain|domain_join|managed_domain)\b" starter-server starter-frontend/src --include="*.py" --include="*.ts" --include="*.html" 2>&1 | grep -v "//\|/\*\| \* " || true; if grep -rnE "\b(quizonline|QuizOnline)\b" starter-server starter-frontend/src --include="*.py" --include="*.ts" --include="*.html" 2>/dev/null; then echo "Carryover business name detected"; exit 1; fi'
+        language: system
+        pass_filenames: false

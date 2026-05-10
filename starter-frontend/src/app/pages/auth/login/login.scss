@@ -1,0 +1,141 @@
+.login-page {
+  min-height: calc(100dvh - 12rem);
+  padding: 2rem 1.5rem 3rem;
+}
+
+.login-page__shell {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 32rem;
+}
+
+.login-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 250, 252, 0.94));
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 1.5rem;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+}
+
+.login-card__eyebrow {
+  color: #0f766e;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.login-card {
+  display: grid;
+  gap: 1rem;
+  padding: 2rem;
+  width: min(100%, 30rem);
+}
+
+.login-card__header {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.login-card__header h2 {
+  color: #0f172a;
+  font-size: 1.65rem;
+  margin: 0;
+}
+
+.login-card__header p:last-child {
+  color: #64748b;
+  margin: 0;
+}
+
+.alert {
+  border-radius: 0.9rem;
+  font-size: 0.94rem;
+}
+
+.login-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.field label {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.field__error {
+  color: #dc2626;
+  font-size: 0.82rem;
+}
+
+.login-form__meta {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.checkbox {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.checkbox label {
+  color: #334155;
+}
+
+.link {
+  color: #0f766e;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.login-submit {
+  width: 100%;
+}
+
+.login-card__footer {
+  align-items: center;
+  border-top: 1px solid rgba(226, 232, 240, 0.9);
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.muted {
+  color: #64748b;
+}
+
+@media (max-width: 860px) {
+  .login-page {
+    padding-inline: 1rem;
+  }
+
+  .login-page__shell {
+    max-width: 34rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .login-card {
+    padding: 1.3rem;
+  }
+
+  .login-form__meta,
+  .login-card__footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

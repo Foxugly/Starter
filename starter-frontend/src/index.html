@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>WprefFrontend</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.__APP__) {
+        document.title = window.__APP__.name;
+        const logo = document.getElementById('logo'); // <link id="logo" ...>
+        if (logo) {
+          logo.href = window.__APP__.logoIco;
+        }
+      }
+    });
+  </script>
+  <base href="/">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="" id="logo" rel="icon" type="image/x-icon">
+</head>
+<body>
+<app-root></app-root>
+</body>
+</html>

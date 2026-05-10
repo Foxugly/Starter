@@ -1,0 +1,25 @@
+[Unit]
+Description=Celery Beat Starter
+After=network.target
+
+[Service]
+User=django
+Group=www-data
+WorkingDirectory=/var/www/django_websites/Starter/starter-server
+
+EnvironmentFile=/var/www/django_websites/Starter/starter-server/.env
+Environment="PYTHONUNBUFFERED=1"
+
+ExecStart=/var/www/django_websites/Starter/starter-server/.venv/bin/celery \
+    -A config beat \
+    --pidfile=/var/www/django_websites/Starter/starter-server/run/celerybeat.pid \
+    --schedule=/var/www/django_websites/Starter/starter-server/celerybeat-schedule \
+    --loglevel=info
+
+Restart=always
+RestartSec=5
+LimitNOFILE=65536
+
+PrivateTmp=true
+[Install]
+WantedBy=multi-user.target

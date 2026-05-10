@@ -1,0 +1,15 @@
+export * from './auth.service';
+import { AuthApi } from './auth.service';
+export * from './language.service';
+import { LanguageApi } from './language.service';
+export * from './mail.service';
+import { MailApi } from './mail.service';
+export * from './schema.service';
+import { SchemaApi } from './schema.service';
+export * from './token.service';
+import { TokenApi } from './token.service';
+export * from './translation.service';
+import { TranslationApi } from './translation.service';
+export * from './user.service';
+import { UserApi } from './user.service';
+export const APIS = [AuthApi, LanguageApi, MailApi, SchemaApi, TokenApi, TranslationApi, UserApi];

@@ -1,0 +1,60 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --- Virtual envs ---
+.venv/
+venv/
+env/
+
+# --- Django ---
+*.sqlite3
+*.sqlite3-journal
+db.sqlite3
+db.*.sqlite3
+local_settings.py
+media/
+media-*/
+staticfiles/
+.env
+.env.local
+.env.*.local
+
+# --- Celery ---
+celerybeat-schedule
+celerybeat-schedule.*
+celerybeat.pid
+run/
+
+# --- Tests / coverage ---
+.pytest_cache/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+.cache/
+
+# --- Generated artefacts ---
+openapi.yaml
+
+# --- IDE ---
+.idea/
+.vscode/

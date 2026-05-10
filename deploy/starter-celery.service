@@ -1,0 +1,26 @@
+[Unit]
+Description=Celery Worker Starter
+After=network.target
+
+[Service]
+Type=simple
+User=django
+Group=www-data
+WorkingDirectory=/var/www/django_websites/Starter/starter-server
+
+EnvironmentFile=/var/www/django_websites/Starter/starter-server/.env
+Environment="PYTHONUNBUFFERED=1"
+
+ExecStart=/var/www/django_websites/Starter/starter-server/.venv/bin/celery \
+    -A config worker \
+    -n starter@%H \
+    -Q starter \
+    --loglevel=info \
+    --concurrency=2
+
+Restart=always
+RestartSec=5
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

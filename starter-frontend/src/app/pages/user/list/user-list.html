@@ -1,0 +1,115 @@
+<div class="page">
+  <div class="header-line header-line--grid">
+    <div class="header-spacer"></div>
+
+    <div class="header-center">
+      <h1 class="title">{{ ui().pages.userList.title }}</h1>
+    </div>
+
+    <div class="header-actions"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <app-bulk-actions
+        [options]="bulkActionOptions()"
+        [placeholder]="ui().pages.userList.bulk.placeholder"
+        [applyLabel]="ui().pages.userList.bulk.applyLabel"
+        [count]="selectedCount()"
+        [countText]="selectedCountText()"
+        [applying]="applyingBulk()"
+        (apply)="applyBulk($event)">
+      </app-bulk-actions>
+
+      <div class="card-actions">
+        <input
+          pInputText
+          [placeholder]="ui().pages.userList.searchPlaceholder"
+          [ngModel]="q()"
+          (ngModelChange)="q.set($event)"
+        />
+
+        <p-button
+          (onClick)="goNew()"
+          icon="pi pi-plus"
+          [label]="ui().common.add"
+          severity="primary"
+          type="button">
+        </p-button>
+      </div>
+    </div>
+
+    <p-table
+      [dataKey]="'id'"
+      [paginator]="rowsData().length > rows"
+      [rows]="rows"
+      [rowsPerPageOptions]="[5, 10, 20, 50]"
+      [value]="rowsData()"
+      [selection]="selectedRows()"
+      (selectionChange)="onSelectionChange($event)"
+      selectionMode="multiple"
+      showGridlines
+      size="small"
+      sortMode="single"
+      stripedRows
+      styleClass="table"
+    >
+      <ng-template #header>
+        <tr>
+          <th class="col-checkbox" style="width: 3rem"></th>
+          <th pSortableColumn="username" style="text-align: center;">{{ ui().pages.userList.username }} <p-sortIcon field="username"></p-sortIcon></th>
+          <th pSortableColumn="fullName" style="text-align: center;">{{ ui().pages.userList.name }} <p-sortIcon field="fullName"></p-sortIcon></th>
+          <th pSortableColumn="email" style="text-align: center;">{{ ui().pages.userList.email }} <p-sortIcon field="email"></p-sortIcon></th>
+          <th pSortableColumn="is_active" style="text-align: center;">{{ ui().pages.userList.active }} <p-sortIcon field="is_active"></p-sortIcon></th>
+          <th pSortableColumn="email_confirmed" style="text-align: center;">{{ ui().pages.userList.emailConfirmed }} <p-sortIcon field="email_confirmed"></p-sortIcon></th>
+          <th class="col-actions">{{ ui().pages.userList.actions }}</th>
+        </tr>
+      </ng-template>
+
+      <ng-template #body let-user>
+        <tr>
+          <td class="col-checkbox">
+            <p-tableCheckbox [value]="user"></p-tableCheckbox>
+          </td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.fullName || '-' }}</td>
+          <td>{{ user.email || '-' }}</td>
+          <td style="text-align: center;">
+            @if (user.is_active) {
+              <i class="pi pi-check-circle" style="color: #16a34a;"></i>
+            } @else {
+              <i class="pi pi-times-circle" style="color: #dc2626;"></i>
+            }
+          </td>
+          <td style="text-align: center;">
+            @if (user.email_confirmed) {
+              <i class="pi pi-check-circle" style="color: #16a34a;"></i>
+            } @else {
+              <i class="pi pi-times-circle" style="color: #dc2626;"></i>
+            }
+          </td>
+          <td class="col-actions">
+            <div class="row-actions">
+              <p-button
+                (click)="goEdit(user.id)"
+                icon="pi pi-pencil"
+                severity="info"
+                size="small"
+                type="button">
+              </p-button>
+              <p-button
+                (click)="goDelete(user.id)"
+                icon="pi pi-trash"
+                severity="danger"
+                size="small"
+                type="button">
+              </p-button>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+<p-confirmDialog></p-confirmDialog>
